@@ -14,7 +14,7 @@ root.configure(background='black')
 
 def ex():
 	exit(0)
-def restart():
+def restart(event):
 	with open("map_or.txt","r") as mr:
 		with open("map.txt",'w') as m:
 			for e in mr:
@@ -35,22 +35,22 @@ def exo(signal,frame):
 	sys.exit(0)
 
 def Main():
-	def pu():
+	def pu(event):
 		backup = sys.stdout
 		lybe.Some("X","O").up()
 		sys.stdout = backup
 		runner()
-	def down():    
+	def down(event):    
 		backup = sys.stdout
 		lybe.Some("X","O").down()
 		sys.stdout = backup
 		runner()
-	def left():			
+	def left(event):			
 		backup = sys.stdout
 		lybe.Some("X","O").left()
 		sys.stdout = backup
 		runner()	
-	def right():	
+	def right(event):	
 		backup = sys.stdout
 		lybe.Some("X","O").right()
 		sys.stdout = backup
@@ -96,14 +96,11 @@ def Main():
 		
 	def runner():
 		Main()
-	buto1 = Button(root,text="^",command=pu,bg="red")
-	buto1.grid(row=22,column=4)					
-	buto2 = Button(root,text="v",command=down,bg="red")
-	buto2.grid(row=23,column=4)
-	buto3 = Button(root,text="<",command=left,bg="red")
-	buto3.grid(row=23,column=3)	
-	buto4 = Button(root,text=">",command=right,bg="red")
-	buto4.grid(row=23,column=5)	
+	root.bind("<z>",up)
+	root.bind("<s>",down)
+	root.bind("<d>",right)
+	root.bind("<q>",left)
+	root.bind("<r>",restart)	
 	
 men()
 Main()	
