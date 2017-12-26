@@ -35,7 +35,7 @@ def exo(signal,frame):
 	sys.exit(0)
 
 def Main():
-	def pu(event):
+	def up(event):
 		backup = sys.stdout
 		lybe.Some("X","O").up()
 		sys.stdout = backup
