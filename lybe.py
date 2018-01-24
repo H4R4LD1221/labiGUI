@@ -33,20 +33,29 @@ class Some:
 	def down(self):
 		sys.stdout = open("map.txt",'w')
 		for a in range(len(self.lab)):
-			if a == len(self.lab) - 1:
-				for w in self.lab[a]:
-					print(w,end = "")                            
-			else:
-				for k in range(len(self.lab[a])):
-					if (self.lab[a-1][k] == self.x) & (self.lab[a][k] != self.o):
+			if a == len(self.lab) - 2:
+				for Z in range(len(self.lab[a])):
+					if self.lab[a-1][Z] == self.x:
 						print(self.x,end="")
+					else:	
+						print(self.lab[a][Z],end="")
+			elif a == len(self.lab) - 1:
+				for w in self.lab[a]:
+					print(w,end = "")		                          
+			else:
+				for k in range(len(self.lab[a])): 
+					if self.lab[a-1][k] == self.x:
+						if self.lab[a][k] == self.o:
+							print(self.o,end="")
+						else:	
+							print(self.x,end="")
 						a -= 2
-					elif self.lab[a][k] == self.x:
+					elif self.lab[a][k] == self.x:		
 						if self.lab[a+1][k] == self.o:
 							print(self.x,end="")
 						else:	
 							print(" ",end="")
-						a += 2        
+						a += 2
 					else:
 						print(self.lab[a][k],end="")
 	def left(self):
